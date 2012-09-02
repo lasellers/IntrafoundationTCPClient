@@ -1,0 +1,37 @@
+# Microsoft Developer Studio Generated Dependency File, included by harness_csv.mak
+
+..\tcpclientcom\Base64.cpp : \
+	"..\tcpclientcom\Base64.h"\
+	"..\tcpclientcom\Log.h"\
+	
+
+.\harness_csv.cpp : \
+	"..\tcpclientcom\Base64.h"\
+	"..\tcpclientcom\Hex.h"\
+	"..\tcpclientcom\Log.h"\
+	"..\tcpclientcom\UU.h"\
+	"..\tcpclientcom\XX.h"\
+	
+
+..\tcpclientcom\Hex.cpp : \
+	"..\tcpclientcom\Hex.h"\
+	"..\tcpclientcom\Log.h"\
+	
+
+..\tcpclientcom\Log.cpp : \
+	"..\tcpclientcom\Log.h"\
+	
+
+.\StdAfx.cpp : \
+	".\StdAfx.h"\
+	
+
+..\tcpclientcom\UU.cpp : \
+	"..\tcpclientcom\Log.h"\
+	"..\tcpclientcom\UU.h"\
+	
+
+..\tcpclientcom\XX.cpp : \
+	"..\tcpclientcom\Log.h"\
+	"..\tcpclientcom\XX.h"\
+	

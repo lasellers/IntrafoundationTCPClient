@@ -1,0 +1,41 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: harness_ftp - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1.HOR\LOCALS~1\Temp\RSP35F.tmp" with contents
+[
+/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/harness_ftp.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Inetpub\wwwroot\tcpclientcom\harness_ftp\harness_ftp.cpp"
+"C:\Inetpub\wwwroot\tcpclientcom\tcpclientcom\Log.cpp"
+"C:\Inetpub\wwwroot\tcpclientcom\harness_ftp\StdAfx.cpp"
+"C:\Inetpub\wwwroot\tcpclientcom\tcpclientcom\tcp.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.HOR\LOCALS~1\Temp\RSP35F.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1.HOR\LOCALS~1\Temp\RSP360.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ws2_32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/harness_ftp.pdb" /machine:I386 /out:"Release/harness_ftp.exe" 
+.\Release\harness_ftp.obj
+.\Release\Log.obj
+.\Release\StdAfx.obj
+.\Release\tcp.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.HOR\LOCALS~1\Temp\RSP360.tmp"
+<h3>Output Window</h3>
+Compiling...
+harness_ftp.cpp
+Log.cpp
+StdAfx.cpp
+tcp.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+harness_ftp.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

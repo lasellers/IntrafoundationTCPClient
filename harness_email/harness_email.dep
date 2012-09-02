@@ -1,0 +1,38 @@
+# Microsoft Developer Studio Generated Dependency File, included by harness_email.mak
+
+..\tcpclientcom\Base64.cpp : \
+	"..\..\..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	"..\tcpclientcom\Base64.h"\
+	"..\tcpclientcom\Log.h"\
+	"..\tcpclientcom\stdafx.h"\
+	
+
+.\harness_email.cpp : \
+	"..\..\..\..\program files\microsoft sdk\include\basetsd.h"\
+	"..\..\..\..\program files\microsoft sdk\include\guiddef.h"\
+	"..\..\..\..\program files\microsoft sdk\include\reason.h"\
+	"..\..\..\..\program files\microsoft sdk\include\stralign.h"\
+	"..\..\..\..\program files\microsoft sdk\include\tvout.h"\
+	"..\tcpclientcom\Base64.h"\
+	"..\tcpclientcom\Log.h"\
+	"..\tcpclientcom\tcp.h"\
+	"..\tcpclientcom\UU.h"\
+	".\StdAfx.h"\
+	
+
+..\tcpclientcom\Log.cpp : \
+	"..\..\..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	"..\tcpclientcom\Log.h"\
+	"..\tcpclientcom\stdafx.h"\
+	
+
+.\StdAfx.cpp : \
+	".\StdAfx.h"\
+	
+
+..\tcpclientcom\UU.cpp : \
+	"..\..\..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	"..\tcpclientcom\Log.h"\
+	"..\tcpclientcom\stdafx.h"\
+	"..\tcpclientcom\UU.h"\
+	

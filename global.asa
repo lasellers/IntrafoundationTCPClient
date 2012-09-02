@@ -1,0 +1,23 @@
+<SCRIPT LANGUAGE="VBScript" RUNAT="Server">
+Sub Application_OnStart
+	Application("ActiveUsers") = 0
+End Sub
+
+Sub Session_OnStart
+	Session.Timeout = 5
+	Session("Start") = Now
+	Application.Lock
+		Application("ActiveUsers") = Application("ActiveUsers") + 1
+	Application.UnLock
+End Sub
+
+Sub Session_OnEnd
+	Application.Lock
+		Application("ActiveUsers") = Application("ActiveUsers") - 1
+	Application.UnLock
+End Sub
+</SCRIPT>
+
+<OBJECT RUNAT=Server SCOPE=Session ID=appobj PROGID="Intrafoundation.TCPClient.3">
+</OBJECT>
+

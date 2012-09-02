@@ -1,0 +1,29 @@
+# Microsoft Developer Studio Generated Dependency File, included by harness_ftp.mak
+
+.\harness_ftp.cpp : \
+	"..\..\..\..\program files\microsoft sdk\include\basetsd.h"\
+	"..\..\..\..\program files\microsoft sdk\include\guiddef.h"\
+	"..\..\..\..\program files\microsoft sdk\include\reason.h"\
+	"..\..\..\..\program files\microsoft sdk\include\stralign.h"\
+	"..\..\..\..\program files\microsoft sdk\include\tvout.h"\
+	"..\tcpclientcom\Log.h"\
+	"..\tcpclientcom\tcp.h"\
+	".\StdAfx.h"\
+	
+
+..\tcpclientcom\Log.cpp : \
+	"..\..\..\..\program files\microsoft sdk\include\basetsd.h"\
+	"..\..\..\..\program files\microsoft sdk\include\guiddef.h"\
+	"..\..\..\..\program files\microsoft sdk\include\propidl.h"\
+	"..\..\..\..\program files\microsoft sdk\include\reason.h"\
+	"..\..\..\..\program files\microsoft sdk\include\shtypes.h"\
+	"..\..\..\..\program files\microsoft sdk\include\stralign.h"\
+	"..\..\..\..\program files\microsoft sdk\include\tvout.h"\
+	"..\..\..\..\program files\microsoft sdk\include\winefs.h"\
+	"..\tcpclientcom\Log.h"\
+	"..\tcpclientcom\stdafx.h"\
+	
+
+.\StdAfx.cpp : \
+	".\StdAfx.h"\
+	

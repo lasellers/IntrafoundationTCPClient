@@ -1,0 +1,23 @@
+HKCR
+{
+	Intrafoundation.TCPClient.3 = s 'TCPClient Class'
+	{
+		CLSID = s '{B2C4E855-870B-4B6E-8C3C-9910CDC3C1C7}'
+	}
+	Intrafoundation.TCPClient = s 'TCPClient Class'
+	{
+		CLSID = s '{B2C4E855-870B-4B6E-8C3C-9910CDC3C1C7}'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B2C4E855-870B-4B6E-8C3C-9910CDC3C1C7} = s 'TCPClient Class'
+		{
+			ProgID = s 'Intrafoundation.TCPClient.3'
+			VersionIndependentProgID = s 'Intrafoundation.TCPClient'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'both'
+			}
+		}
+	}
+}

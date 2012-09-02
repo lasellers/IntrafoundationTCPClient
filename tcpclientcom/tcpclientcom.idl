@@ -1,0 +1,117 @@
+// tcpclientcom.idl : IDL source for tcpclientcom.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (tcpclientcom.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	
+	[
+		object,
+		uuid(EC07F724-40CC-4531-A27C-3AEE86650BD7),
+		dual,
+		helpstring("ITCPClient Interface"),
+		pointer_default(unique)
+	]
+	interface ITCPClient : IDispatch
+	{
+		[propget, id(1), helpstring("property thread")] HRESULT thread([out, retval] long* pVal);
+		[propget, id(2), helpstring("property version")] HRESULT version([out, retval] BSTR* pstr);
+		[propget, id(3), helpstring("property copyright")] HRESULT copyright([out, retval] BSTR* pstr);
+		[propget, id(4), helpstring("property description")] HRESULT description([out, retval] BSTR* pstr);
+		[propget, id(5), helpstring("property instance")] HRESULT instance([out, retval] long* pVal);
+		[propget, id(6), helpstring("property instances")] HRESULT instances([out, retval] long* pVal);
+		[propget, id(7), helpstring("property Log")] HRESULT Log([out, retval] BSTR* pstrText);
+		[id(8), helpstring("method ClearLog")] HRESULT ClearLog();
+
+		[id(10), helpstring("method Open")] HRESULT Open([in] BSTR strhost, [in] BSTR strport, [out, retval] long *pconnected);
+		[id(11), helpstring("method Close")] HRESULT Close();
+		[id(12), helpstring("method Send")] HRESULT Send([in] BSTR inText);
+		[id(13), helpstring("method Recv")] HRESULT Recv([out, retval] BSTR *poutText);
+		[id(14), helpstring("method SendRN")] HRESULT SendRN([in] BSTR inText);
+		[id(15), helpstring("method RecvRN")] HRESULT RecvRN([out, retval] BSTR *poutText);
+		[id(16), helpstring("method FlushRN")] HRESULT FlushRN();
+		[id(17), helpstring("method SendFile")] HRESULT SendFile([in] BSTR strFilename);
+		[id(18), helpstring("method RecvFile")] HRESULT RecvFile([in] BSTR strFilename);
+		[id(19), helpstring("method RecvFileAppend")] HRESULT RecvFileAppend([in] BSTR strFilename);
+		[id(20), helpstring("method SendCSV")] HRESULT SendCSV([in] BSTR inText);
+		[id(21), helpstring("method RecvCSV")] HRESULT RecvCSV([out, retval] BSTR *poutText);
+		[id(22), helpstring("method SendFrame")] HRESULT SendFrame([in] BSTR strFrame, [in] long FrameSize);
+		[id(23), helpstring("method RecvFrame")] HRESULT RecvFrame([in] long FrameSize, [out, retval] BSTR *pstrFrame);
+		[id(24), helpstring("method FrameSize")] HRESULT FrameSize([in] BSTR strFrameDefinition, [out, retval] long *pFrameSize);
+		[id(25), helpstring("method EncodeFrame")] HRESULT EncodeFrame([in] BSTR strFrameDefinition,[in] BSTR strFieldName,[in] BSTR strFieldValue,[in] BSTR strFrame, [out, retval] BSTR *pstrFrame);
+		[id(26), helpstring("method DecodeFrame")] HRESULT DecodeFrame([in] BSTR strFrameDefinition,[in] BSTR strFieldName,[in] BSTR strFrame,[out, retval] BSTR *pstrValue);
+
+		[id(30), helpstring("method Hash")] HRESULT Hash([in] BSTR strHashType, [in] BSTR strInput, [out, retval] BSTR *pstrHash);
+		[id(31), helpstring("method HashFile")] HRESULT HashFile([in] BSTR strHashType, [in] BSTR strFilename, [out, retval] BSTR *pstrHash);
+
+		[propput, id(50), helpstring("property timeout")] HRESULT timeout([in] double secs);
+		[propput, id(51), helpstring("property cutoff")] HRESULT cutoff([in] long bytes);
+		[propput, id(52), helpstring("property blocksize")] HRESULT blocksize([in] long bytes);
+		[propput, id(53), helpstring("property packetsize")] HRESULT packetsize([in] long bytes);
+		
+		[propget, id(50), helpstring("property timeout")] HRESULT timeout([out, retval] double *psecs);
+		[propget, id(51), helpstring("property cutoff")] HRESULT cutoff([out, retval] long *pstatus);
+		[propget, id(52), helpstring("property blocksize")] HRESULT blocksize([out, retval] long *pbytes);
+		[propget, id(53), helpstring("property packetsize")] HRESULT packetsize([out, retval] long *pbytes);
+
+		[propput, id(55), helpstring("property keepalives")] HRESULT keepalives([in] long flag);
+		[propput, id(56), helpstring("property nagledelay")] HRESULT nagledelay([in] long flag);
+
+		[propget, id(57), helpstring("property is_connected")] HRESULT is_connected([out, retval] long *pstatus);
+		[propget, id(58), helpstring("property is_completed")] HRESULT is_completed([out, retval] long *pstatus);
+		[propget, id(59), helpstring("property is_cutoff")] HRESULT is_cutoff([out, retval] long *pstatus);
+		[propget, id(61), helpstring("property is_keepalives")] HRESULT is_keepalives([out, retval] long *pstatus);
+		[propget, id(62), helpstring("property is_nagledelay")] HRESULT is_nagledelay([out, retval] long *pstatus);
+
+		[propget, id(63), helpstring("property last_timeout")] HRESULT last_timeout([out, retval] double *psecs);
+		[propget, id(64), helpstring("property socket")] HRESULT socket([out, retval] long *psock);
+		[propget, id(65), helpstring("property local")] HRESULT local([out, retval] BSTR *pstr);
+		[propget, id(66), helpstring("property remote")] HRESULT remote([out, retval] BSTR *pstr);
+		[propget, id(67), helpstring("property bytessent")] HRESULT bytessent([out, retval] long *pbytes);
+		[propget, id(70), helpstring("property bytesreceived")] HRESULT bytesreceived([out, retval] long *pbytes);
+		[propget, id(71), helpstring("property byteslastsent")] HRESULT byteslastsent([out, retval] long *pbytes);
+		[propget, id(72), helpstring("property byteslastreceived")] HRESULT byteslastreceived([out, retval] long *pbytes);
+		[propget, id(73), helpstring("property stack_recv_buffer")] HRESULT stack_recv_buffer([out, retval] long *pbytes);
+		[propget, id(74), helpstring("property stack_send_buffer")] HRESULT stack_send_buffer([out, retval] long *pbytes);
+		[propget, id(75), helpstring("property send_packets")] HRESULT send_packets([out, retval] long *pcount);
+		[propget, id(76), helpstring("property recv_packets")] HRESULT recv_packets([out, retval] long *pcount);
+		[propget, id(77), helpstring("property recv_faults")] HRESULT recv_faults([out, retval] long *pcount);
+		[propget, id(78), helpstring("property recvbuffer_faults")] HRESULT recvbuffer_faults([out, retval] long *pcount);
+		[propget, id(79), helpstring("property kbpssent")] HRESULT kbpssent([out, retval] double *pkbps);
+		[propget, id(80), helpstring("property kbpsreceived")] HRESULT kbpsreceived([out, retval] double *pkbps);
+		[propget, id(81), helpstring("property kbpslastsent")] HRESULT kbpslastsent([out, retval] double *pkbps);
+		[propget, id(82), helpstring("property kbpslastreceived")] HRESULT kbpslastreceived([out, retval] double *pkbps);
+		[propget, id(83), helpstring("property ping")] HRESULT ping([out, retval] long *pVal);
+		[propget, id(86), helpstring("property mutex_locks")] HRESULT mutex_locks([out, retval] long *pVal);
+		[propget, id(87), helpstring("property mutex_sleep")] HRESULT mutex_sleep([out, retval] long *pVal);
+
+//for ColdFusion 3-5
+		[propput, id(90), helpstring("property set_timeout")] HRESULT set_timeout([in] double secs);
+		[propput, id(91), helpstring("property set_cutoff")] HRESULT set_cutoff([in] long bytes);
+		[propput, id(92), helpstring("property set_blocksize")] HRESULT set_blocksize([in] long bytes);
+		[propput, id(93), helpstring("property set_packetsize")] HRESULT set_packetsize([in] long bytes);
+		[propput, id(94), helpstring("property set_keepalives")] HRESULT set_keepalives([in] long flag);
+		[propput, id(95), helpstring("property set_nagledelay")] HRESULT set_nagledelay([in] long flag);
+	};
+
+[
+	uuid(E89B65BD-D811-42B3-A176-E6C6A3774410),
+	version(1.0),
+	helpstring("tcpclientcom 1.0 Type Library")
+]
+library TCPCLIENTCOMLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(B2C4E855-870B-4B6E-8C3C-9910CDC3C1C7),
+		helpstring("TCPClient Class")
+	]
+	coclass TCPClient
+	{
+		[default] interface ITCPClient;
+	};
+};
