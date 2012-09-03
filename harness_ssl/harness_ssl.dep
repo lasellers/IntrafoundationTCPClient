@@ -1,9 +1,0 @@
-# Microsoft Developer Studio Generated Dependency File, included by harness_ssl.mak
-
-.\harness_ssl.cpp : \
-	".\StdAfx.h"\
-	
-
-.\StdAfx.cpp : \
-	".\StdAfx.h"\
-	

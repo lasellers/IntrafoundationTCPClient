@@ -106,7 +106,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 	///////////////////////////////////////////////////////////////////////
 
-	printf("PRESS"); _getch();
+	printf("END OF TEST HARNESS\nPress a key..."); _getch();
 	return 0;
 }
 

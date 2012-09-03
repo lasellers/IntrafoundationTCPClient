@@ -1,9 +1,0 @@
-# Microsoft Developer Studio Generated Dependency File, included by harness_szlist.mak
-
-.\harness_szlist.cpp : \
-	".\StdAfx.h"\
-	
-
-.\StdAfx.cpp : \
-	".\StdAfx.h"\
-	

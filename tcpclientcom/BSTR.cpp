@@ -13,10 +13,6 @@
 	(865)828-4024
 	Rutledge, TN USA
 	
-*/
-///////////////////////////////////////////////////////////////////////////
-/*
-
   Version History
 
  v1.0 March 26 2004. Wrote this from scratch in about three hours out of general

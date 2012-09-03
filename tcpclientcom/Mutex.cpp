@@ -14,9 +14,9 @@
 // Mutex.cpp: implementation of the CMutex class.
 /*
 
-  Version History
+Version History
 
-  v1.0 April 3rd? 2004.
+v1.0 April 3rd? 2004.
 */
 
 //
@@ -46,12 +46,17 @@ const int CMutex::NAGLE_DELAY=20; //milliseconds
 */
 CMutex::CMutex()
 {
-    m_mutex=MUTEX_UNLOCKED;
+	m_mutex=MUTEX_UNLOCKED;
 	m_thread=NULL;
 	m_sleep=0L;
 	m_lock_count=0L;
+
+	m_locks=0;
+	m_unlocks=0;
+
 #ifdef _DEBUG
-	printf("CMutex::  thread %u = GetCurrentThreadId %u\n",m_thread,GetCurrentThreadId());
+	printf("CMutex::\n");
+	print_status();
 #endif
 }
 
@@ -65,11 +70,11 @@ CMutex::~CMutex()
 */
 bool CMutex::Try() //, int& mutexlocks)
 {
-    int thread=GetCurrentThreadId();
+	int thread=GetCurrentThreadId();
 
 #ifdef _DEBUG
-	printf("CMutex::Try: thread %u this->thread %u\n",
-        thread,m_thread);
+	printf("CMutex::Try:\n");
+	print_status();
 #endif
 
 	size_t emergency_abort_counter=600;
@@ -86,8 +91,8 @@ bool CMutex::Try() //, int& mutexlocks)
 		Lock(); //thread);
 		return true;
 	}
-	else
-		return false;
+
+	return false;
 }
 
 
@@ -95,9 +100,12 @@ bool CMutex::Try() //, int& mutexlocks)
 */
 bool CMutex::Untry()
 {
-    int thread=GetCurrentThreadId();
+#ifdef _DEBUG
+	printf("CMutex::Lock\n");
+	print_status();
+#endif
 
-    return Unlock(); //thread);
+	return Unlock(); //thread);
 }
 
 
@@ -105,38 +113,46 @@ bool CMutex::Untry()
 */
 bool CMutex::Lock()
 {
-    int thread=GetCurrentThreadId();
+	int thread=GetCurrentThreadId();
 
 #ifdef _DEBUG
-	printf("CMutex::Lock: thread %u this->thread %u\n",thread,this->m_thread);
+	printf("CMutex::Lock\n");
+	print_status();
 #endif
-	
+
+	this->m_mutex++;
+	this->m_locks++;
+
 	if(isUnlocked()) //thread))
 	{
 		this->m_thread=thread;
 		return true;
 	}
-	else
-		return false;
+
+	return false;
 }
 
 /*
 */
 bool CMutex::Unlock()
 {
-    int thread=GetCurrentThreadId();
+	int thread=GetCurrentThreadId();
 
 #ifdef _DEBUG
-	printf("CMutex::Unlock:  thread %u this->thread %u\n",thread,this->m_thread);
+	printf("CMutex::Unlock\n");
+	print_status();
 #endif
+
+	this->m_mutex--;
+	this->m_unlocks++;
 
 	if(isUnlocked()) //thread))
 	{
 		this->m_thread=NULL;
 		return true;
 	}
-	else
-		return false;
+
+	return false;
 }
 
 /*
@@ -146,13 +162,14 @@ false, if it is busy
 */
 bool CMutex::isUnlocked()
 {
-    int thread=GetCurrentThreadId();
+	int thread=GetCurrentThreadId();
 
 #ifdef _DEBUG
-	printf("CMutex::isUnlocked:  thread %u this->thread %u threadid %u\n",thread,this->m_thread);
+	printf("CMutex::isUnlocked\n");
 	printf("CMutex::isUnlocked? %s\n",(thread==this->m_thread || this->m_thread==NULL)?"UNLOCKED":"LOCKED");
+	print_status();
 #endif
-	
+
 	return (thread==this->m_thread || this->m_thread==NULL);
 }
 
@@ -163,13 +180,14 @@ true, if it is busy
 */
 bool CMutex::isLocked() //DWORD thread)
 {
-    int thread=GetCurrentThreadId();
+	int thread=GetCurrentThreadId();
 
 #ifdef _DEBUG
-	printf("CMutex::isLocked:  thread %u this->thread %u\n",thread,this->m_thread);
+	printf("CMutex::isLocked\n");
 	printf("CMutex::isLocked? %s\n",(thread==this->m_thread || this->m_thread==NULL)?"UNLOCKED":"LOCKED");
+	print_status();
 #endif
-	
+
 	return (!(thread==this->m_thread || this->m_thread==NULL));
 }
 
@@ -178,20 +196,39 @@ bool CMutex::isLocked() //DWORD thread)
 */
 long CMutex::get_lock_count()
 {
-    int thread=GetCurrentThreadId();
 #ifdef _DEBUG
-	printf("CMutex::get_lock_count: thread %u this->thread %u\n",thread,this->m_thread);
+	printf("CMutex::get_lock_count\n");
+	print_status();
 #endif
-	return m_lock_count;	
+	return (long)m_lock_count;	
 }
 
 /*
 */
 long CMutex::get_sleep_milliseconds()
 {
-    int thread=GetCurrentThreadId();
 #ifdef _DEBUG
-	printf("CMutex::get_sleep_milliseconds: thread %u this->thread %u\n",thread,this->m_thread);
+	printf("CMutex::get_sleep_milliseconds\n");
+	print_status();
 #endif
-	return m_sleep;	
+	return (long)m_sleep;	
 }
+
+
+#ifdef _DEBUG
+void CMutex::print_status()
+{
+	int thread=GetCurrentThreadId();
+	printf("  ## thread=%d (this thread:%d) mutex=%d sleep=%d lock_count=%d locks=%d unlocks=%d ##\n",
+		thread,
+		this->m_thread,
+		m_mutex,
+		m_sleep,
+		m_lock_count,
+		m_locks,
+		m_unlocks
+		);
+}
+#endif
+
+

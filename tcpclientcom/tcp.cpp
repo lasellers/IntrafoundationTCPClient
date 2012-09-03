@@ -715,8 +715,8 @@ int tcp::SendF(char const* format, ...)
 	va_end(argptr);
 	
 	//
-	int const szlen=strlen(str);
-	Send(str,szlen);
+	size_t const szlen=strlen(str);
+	Send(str,(long)szlen);
 	
 #ifdef _DEBUG
 	printf("\ntcp::SendF %s\n",str);

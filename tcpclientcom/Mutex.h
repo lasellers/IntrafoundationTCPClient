@@ -44,6 +44,13 @@ public:
 	DWORD m_thread;
 	size_t m_sleep;
 	size_t m_lock_count;
+	size_t m_locks;
+	size_t m_unlocks;
+
+#ifdef _DEBUG
+private:
+	void print_status();
+#endif
 
 public:
 	bool Try();
